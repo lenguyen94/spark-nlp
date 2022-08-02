@@ -143,6 +143,9 @@ class ContextSpellCheckerApproach(AnnotatorApproach):
                                  "Number of classes to use during factorization of the softmax output in the LM.",
                                  typeConverter=TypeConverters.toInt)
 
+    graphFolder = Param(Params._dummy(), "graphFolder", "Folder path that contain external graph files",
+                        TypeConverters.toString)
+
     wordMaxDistance = Param(Params._dummy(),
                             "wordMaxDistance",
                             "Maximum distance for the generated candidates for every word.",
@@ -232,6 +235,16 @@ class ContextSpellCheckerApproach(AnnotatorApproach):
             Number of classes
         """
         return self._set(languageModelClasses=count)
+
+    def setGraphFolder(self, p):
+        """Sets folder path that contain external graph files.
+
+        Parameters
+        ----------
+        p : str
+            Folder path that contain external graph files
+        """
+        return self._set(graphFolder=p)
 
     def setWordMaxDistance(self, dist):
         """Sets maximum distance for the generated candidates for every word.
